@@ -1,0 +1,10 @@
+REG_JOYP equ $FF00
+REG_IF   equ $FF0F
+REG_LCDC equ $FF40
+REG_STAT equ $FF41
+REG_SCX  equ $FF43
+REG_LY   equ $FF44
+REG_DMA  equ $FF46
+REG_BGP  equ $FF47
+REG_OBP0 equ $FF48
+REG_IE   equ $FFFF
