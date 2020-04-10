@@ -1,12 +1,13 @@
-section "util",rom0
+section "mem",rom0
+
 ; ```
 ; mem_copy(start: BC, end: DE, dest: HL)
 ; destroy(A, BC, HL)
 ; ```
 mem_copy::
    ld a, [bc]
-   ld [hl+], a
    inc bc
+   ld [hl+], a
    ld a, c
    cp a, e
    jr nz, mem_copy

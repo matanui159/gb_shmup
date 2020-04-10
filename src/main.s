@@ -7,7 +7,7 @@ section "header", rom0[$0100]
 
 section "main", rom0
 main:
-   ld a, $00
+   xor a, a
    ld [REG_LCDC], a
    ld a, $93
    ld [REG_BGP], a
@@ -15,6 +15,7 @@ main:
    ld a, $03
    ld [REG_IE], a
 
+   call random_init
    call tiles_init
    call oam_init
    call background_init
@@ -22,7 +23,7 @@ main:
 
    ld a, $93
    ld [REG_LCDC], a
-   ld a, 0
+   xor a, a
    ld [REG_IF], a
    ei
 

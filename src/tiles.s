@@ -1,4 +1,5 @@
-section "tilemap", rom0
+section "tiles", rom0
+
 ; ```
 ; tiles_init()
 ; ```

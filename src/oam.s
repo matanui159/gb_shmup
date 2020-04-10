@@ -1,6 +1,7 @@
 include "reg.inc"
 
 section "oam", rom0
+
 ; ```
 ; oam_init()
 ; ```
@@ -38,7 +39,8 @@ oam_vblank:
 
 ; ```
 ; oam_create(id: L, x: B, y: C, tile: D)
-; destroy(HL)
+; return(nextId: L)
+; destroy(H)
 ; ```
 oam_create::
    ld h, high(oam_data)
@@ -47,6 +49,8 @@ oam_create::
    ld [hl], b
    inc l
    ld [hl], d
+   inc l
+   inc l
    ret
 
 ; ```
@@ -56,16 +60,12 @@ oam_create::
 oam_create2::
    ld c, e
    call oam_create
-   inc l
-   inc l
 
    inc d
    ld a, e
    add a, $08
    ld c, a
    call oam_create
-   inc l
-   inc l
 
    inc d
    ld a, b
@@ -73,8 +73,6 @@ oam_create2::
    ld b, a
    ld c, e
    call oam_create
-   inc l
-   inc l
 
    inc d
    ld a, e
@@ -83,19 +81,8 @@ oam_create2::
    jp oam_create
 
 ; ```
-; oam_destroy(id0: C)
-; destroy(A, B)
-; ```
-; TODO: improve, make destroy2
-oam_destroy::
-   ld b, high(oam_data)
-   ld a, 0
-   ld [bc], a
-   ret
-
-; ```
 ; oam_get(id: L)
-; return(x: B, y: C)
+; return(nextId: L, x: B, y: C)
 ; destroy(HL)
 ; ```
 oam_get::
@@ -103,17 +90,24 @@ oam_get::
    ld c, [hl]
    inc l
    ld b, [hl]
+   inc l
+   inc l
+   inc l
    ret
 
 ; ```
 ; oam_set(id: L, x: B, y: C)
-; destroy(HL)
+; return(nextId: L)
+; destroy(H)
 ; ```
 oam_set::
    ld h, high(oam_data)
    ld [hl], c
    inc l
    ld [hl], b
+   inc l
+   inc l
+   inc l
    ret
 
 ; ```
@@ -123,26 +117,17 @@ oam_set::
 oam_set2::
    ld c, d
    call oam_set
-   inc l
-   inc l
-   inc l
 
    ld a, d
    add a, $08
    ld c, a
    call oam_set
-   inc l
-   inc l
-   inc l
 
    ld a, b
    add a, $08
    ld b, a
    ld c, d
    call oam_set
-   inc l
-   inc l
-   inc l
 
    ld a, d
    add a, $08

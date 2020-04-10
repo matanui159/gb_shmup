@@ -1,6 +1,7 @@
 include "reg.inc"
 
 section "random", rom0
+
 ; ```
 ; random_init()
 ; ```

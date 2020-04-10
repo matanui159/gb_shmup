@@ -1,6 +1,7 @@
 include "reg.inc"
 
 section "background", rom0
+
 ; ```
 ; background_init()
 ; ```
@@ -28,11 +29,13 @@ endr
 ; background_update()
 ; ```
 background_update::
-   call random
    ld h, high(background_scx)
+   call random
    ld l, a
    call random
    ld [hl], a
+   ld a, [background_scx]
+   ld [REG_SCX], a
    ret
 
 section "background_stat", rom0[$0048]
@@ -40,6 +43,7 @@ section "background_stat", rom0[$0048]
    push bc
    ld b, high(background_scx)
    ld a, [REG_LY]
+   inc a
    ld c, a
    ld a, [bc]
    ld [REG_SCX], a

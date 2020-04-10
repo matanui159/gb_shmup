@@ -1,4 +1,5 @@
 section "player", rom0
+
 ; ```
 ; player_init()
 ; ```
@@ -7,7 +8,6 @@ player_init::
    ld b, 80
    ld e, 128
    ld d, $02
-
    call oam_create2
    ret
 

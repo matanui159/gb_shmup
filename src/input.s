@@ -1,6 +1,7 @@
 include "reg.inc"
 
 section "input", rom0
+
 ; ```
 ; input()
 ; return(state: A)
