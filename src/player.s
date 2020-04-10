@@ -1,5 +1,4 @@
 section "player", rom0
-
 ; ```
 ; player_init()
 ; ```

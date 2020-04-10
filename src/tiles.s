@@ -1,5 +1,4 @@
 section "tiles", rom0
-
 ; ```
 ; tiles_init()
 ; ```

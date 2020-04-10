@@ -15,7 +15,7 @@ $(out): $(obj)
 
 run: $(out)
 	binjgb-debugger $< -p -P 74
-	rm imgui.ini
+	-rm imgui.ini
 
 clean:
 	rm -r bin

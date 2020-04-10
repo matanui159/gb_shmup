@@ -1,7 +1,6 @@
 include "reg.inc"
 
 section "background", rom0
-
 ; ```
 ; background_init()
 ; ```

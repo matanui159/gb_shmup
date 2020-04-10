@@ -1,7 +1,6 @@
 include "reg.inc"
 
 section "oam", rom0
-
 ; ```
 ; oam_init()
 ; ```
