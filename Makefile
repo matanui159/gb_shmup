@@ -11,7 +11,7 @@ bin/%.o: %.asm
 
 $(out): $(obj)
 	rgblink -o $@ $^ -dtm $(@:.gb=.map)
-	rgbfix $@ -vp 0
+	rgbfix $@ -vjp 0
 	binjgb-tester $@
 
 run: $(out)
