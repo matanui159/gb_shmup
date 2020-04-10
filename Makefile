@@ -1,11 +1,11 @@
-src = $(sort $(wildcard src/*.s))
-obj = $(src:%.s=bin/%.o)
+src = $(sort $(wildcard src/*.asm))
+obj = $(src:%.asm=bin/%.o)
 dep = $(obj:.o=.d)
 out = bin/rom.gb
 build: $(out)
 
 -include $(dep)
-bin/%.o: %.s
+bin/%.o: %.asm
 	mkdir -p $(dir $@)
 	rgbasm -o $@ $< -M $(@:.o=.d) -i $(dir $<) -Weverything
 
