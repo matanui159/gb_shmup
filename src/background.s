@@ -52,4 +52,4 @@ section "background_stat", rom0[$0048]
    reti
 
 section "background_ram", wram0, align[8]
-background_scx: ds $100
+background_scx: ds 256
